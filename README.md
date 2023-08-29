@@ -16,6 +16,7 @@ Example prompt simple prompt :
 Example prompt with srtyles and aspect ratio :
 !generate a cute kitten --s disney --ar 16:9
 
+You need both to run, the fastapi and the discord bot, the discord bot connects to the fastapi ( main.py )
 Enjoy ...
 
 
