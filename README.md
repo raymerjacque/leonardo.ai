@@ -19,5 +19,9 @@ Example prompt with srtyles and aspect ratio :
 You need both to run, the fastapi and the discord bot, the discord bot connects to the fastapi ( main.py )
 Enjoy ...
 
+here is a preview video :
+
+https://youtu.be/9Et26_lqx40
+
 
 
