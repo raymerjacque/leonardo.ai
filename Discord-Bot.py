@@ -73,7 +73,7 @@ style_descriptions = {
     "GTA": "gta iv art style, gta art, gta loading screen art, gta chinatown art style, gta 5 loading screen poster, grand theft auto 5, grand theft auto video game",
     "HALLOWEEN": "in Halloween style, Halloween, dark, moody, atmospheric, horror art style, Halloween fantasy art, Halloween concept, CGSociety 7, halloween, creepy",
     "HAUNTED": "horror CGI 4k, scary color art in 4k, horror movie cinematography, Insidious, La Llorona, still from animated horror movie, film still from horror movie, haunted, eerie, unsettling, creepy",
-    "HQL": "4k, 8k, Ultra Realistic, Extreme detail, Detailed edges,  detailed image, Extreme Quality, Photo realistic, ULTRA HIGH DEFINITION DETAILS, Dynamic lighting effects, cinematic lighting, spectacular lighting, very detailed, Ultra HD",
+    "HQL": "4k, 8k, Ultra Realistic, Extreme detail, Detailed edges, Extreme Quality, Extreme realistic, ULTRA HIGH DEFINITION DETAILS, very detailed, Ultra HD",
     "HQ": "High Quality, 8K, Cinematic Lighting, Stunning background, high detail, realistic, incredible 16k resolution produced in Unreal Engine 5 and Octane Render for background, sunshafts",
     "HISTORICAL": "18th-century French fashion, oil painting, historical figure, in the style of Rococo, based on historical costumes, history, historical, classical",
     "HORROR": "classic horror, classic horror movie style, in a creepy atmosphere, in a horrifying atmosphere, CGSociety 5, horror art style",
@@ -255,6 +255,9 @@ async def generate(ctx, *, user_input: str):
         if style_code in style_descriptions:
             user_input = f"{user_input}, {style_descriptions[style_code]}"
         user_input = user_input.replace(f" {style_code}", "").strip()
+        
+    # Remove '--s' from the user input
+    user_input = user_input.replace("--s", "").strip()  
 
     # Update the prompt in the data dictionary
     data['prompt'] = user_input
