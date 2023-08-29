@@ -231,6 +231,15 @@ async def generate(ctx, *, user_input: str):
         "num_images": 4,                                                           
     }
 
+    # If the user does not provide a style, add High quality Lighting as the default style
+    if "--s" not in user_input:
+        if "--ar" in user_input:
+            # Split the user input at '--ar' and insert '--s HQL' before it
+            parts = user_input.split("--ar")
+            user_input = parts[0].strip() + " --s HQL --ar" + parts[1].strip()
+        else:
+            user_input += " --s HQL"    
+
     # Extracting parameters from user input and updating the default values
     if "--ar" in user_input:
         aspect_ratio = user_input.split("--ar")[1].split()[0].lower()  # Convert to lowercase for case insensitivity
