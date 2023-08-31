@@ -216,22 +216,22 @@ async def generate(ctx, *, user_input: str):
     # Default parameters
     data = {
         'prompt': user_input,
-        'modelId': '6bef9f1b-29cb-40c7-b9df-32b51c1f67d3', # <---- put your model ID here
-        'width': 768,
-        'height': 768,
-        "sd_version": "v2",        
+        'modelId': 'e316348f-7773-490e-adcd-46757c738eb7',
+        'width': 512,
+        'height': 512,
+        "sd_version": "v1.5",        
         'promptMagic': True,  
         'highContrast': True, 
         "alchemy": True,
-        "contrastRatio": 0.5,
+        "contrastRatio": 0.7,
         "expandedDomain": True,
         "highResolution": False,
-        "presetStyle": "DYNAMIC",
+        "presetStyle": "GENERAL",
         "promptMagicVersion": "v3",
         "num_images": 4,                                                           
     }
-
-    # If the user does not provide a style, add High quality Lighting as the default style
+    
+   # If the user does not provide a style, add the default style
     if "--s" not in user_input:
         if "--ar" in user_input:
             # Split the user input at '--ar' and insert '--s HQL' before it
@@ -246,7 +246,7 @@ async def generate(ctx, *, user_input: str):
         if aspect_ratio == "16:9":
             data['width'], data['height'] = 912, 512
         elif aspect_ratio == "1:1":
-            data['width'], data['height'] = 768, 768
+            data['width'], data['height'] = 512, 512
         user_input = user_input.replace(f"--ar {aspect_ratio}", "").strip()
 
     # Extracting style descriptions from user input
@@ -257,7 +257,7 @@ async def generate(ctx, *, user_input: str):
         user_input = user_input.replace(f" {style_code}", "").strip()
         
     # Remove '--s' from the user input
-    user_input = user_input.replace("--s", "").strip()  
+    user_input = user_input.replace("--s", "").strip()        
 
     # Update the prompt in the data dictionary
     data['prompt'] = user_input
