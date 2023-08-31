@@ -223,12 +223,15 @@ async def generate(ctx, *, user_input: str):
         'promptMagic': True,  
         'highContrast': True, 
         "alchemy": True,
-        "contrastRatio": 0.7,
+        "contrastRatio": 0.2,
         "expandedDomain": True,
         "highResolution": False,
         "presetStyle": "GENERAL",
         "promptMagicVersion": "v3",
-        "num_images": 4,                                                           
+        "guidance_scale": 15,
+        "init_strength": 0.55,                
+        "num_images": 4, 
+                                                                 
     }
     
    # If the user does not provide a style, add the default style
